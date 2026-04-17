@@ -1,7 +1,6 @@
 package service;
 
 import dao.HrDAO;
-import model.HrUser;
 
 public class AuthService {
     private final HrDAO hrDAO = new HrDAO();
@@ -12,14 +11,7 @@ public class AuthService {
             return false;
         }
 
-        HrUser hrUser = hrDAO.findByUsername(username);
-
-        if (hrUser == null) {
-            // TODO: Replace this with real authentication logic.
-            return false;
-        }
-
-        return password.equals(hrUser.getPassword());
+        return hrDAO.login(username, password) != null;
     }
 
     private boolean isBlank(String value) {

@@ -1,18 +1,13 @@
 package ui;
 
 import java.util.Scanner;
+
 import model.Employee;
 import model.PayrollRecord;
 import service.AuthService;
 import service.EmployeeService;
 import service.PayrollService;
 import util.InputHandler;
-
-/*
-Temp terminal based UI
-App must be ready to be implemented with simple GUI
-Plan: using swing GUI
-*/ 
 
 public class TerminalMenu {
     private final Scanner scanner;
@@ -37,15 +32,28 @@ public class TerminalMenu {
             int choice = inputHandler.readInt("Choose an option: ");
 
             switch (choice) {
-                case 1 -> handleLogin();
-                case 2 -> handleSearchEmployee();
-                case 3 -> handleUpdateEmployee();
-                case 4 -> handleViewPayroll();
-                case 5 -> {
+                case 1:
+                    handleLogin();
+                    break;
+                case 2:
+                    handleSearchEmployee();
+                    break;
+                case 3:
+                    handleUpdateEmployee();
+                    break;
+                case 4:
+                    handleUpdateSalary();
+                    break;
+                case 5:
+                    handleViewPayroll();
+                    break;
+                case 6:
                     running = false;
                     System.out.println("Exiting program.");
-                }
-                default -> System.out.println("Invalid option. Please try again.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
             }
 
             System.out.println();
@@ -59,8 +67,9 @@ public class TerminalMenu {
         System.out.println("1. Login");
         System.out.println("2. Search Employee");
         System.out.println("3. Update Employee");
-        System.out.println("4. View Payroll");
-        System.out.println("5. Exit");
+        System.out.println("4. Update Salary");
+        System.out.println("5. View Payroll");
+        System.out.println("6. Exit");
     }
 
     private void handleLogin() {
@@ -76,8 +85,8 @@ public class TerminalMenu {
     }
 
     private void handleSearchEmployee() {
-        int employeeId = inputHandler.readInt("Employee ID: ");
-        Employee employee = employeeService.searchEmployeeById(employeeId);
+        int empId = inputHandler.readInt("Employee ID: ");
+        Employee employee = employeeService.searchEmployeeById(empId);
 
         if (employee == null) {
             System.out.println("No employee found. Search logic still needs implementation.");
@@ -87,13 +96,16 @@ public class TerminalMenu {
     }
 
     private void handleUpdateEmployee() {
-        int employeeId = inputHandler.readInt("Employee ID: ");
-        String firstName = inputHandler.readString("First name: ");
-        String lastName = inputHandler.readString("Last name: ");
-        String department = inputHandler.readString("Department: ");
+        int empId = inputHandler.readInt("Employee ID: ");
+        String fname = inputHandler.readString("First name: ");
+        String lname = inputHandler.readString("Last name: ");
+        String email = inputHandler.readString("Email: ");
+        String hireDate = inputHandler.readString("Hire date (YYYY-MM-DD): ");
         double salary = inputHandler.readDouble("Salary: ");
+        String ssn = inputHandler.readString("SSN: ");
+        int addressId = inputHandler.readInt("Address ID: ");
 
-        Employee employee = new Employee(employeeId, firstName, lastName, department, salary);
+        Employee employee = new Employee(empId, fname, lname, email, hireDate, salary, ssn, addressId);
         boolean updated = employeeService.updateEmployee(employee);
 
         if (updated) {
@@ -103,9 +115,22 @@ public class TerminalMenu {
         }
     }
 
+    private void handleUpdateSalary() {
+        int empId = inputHandler.readInt("Employee ID: ");
+        double salary = inputHandler.readDouble("New salary: ");
+
+        boolean updated = employeeService.updateSalary(empId, salary);
+
+        if (updated) {
+            System.out.println("Salary updated.");
+        } else {
+            System.out.println("Salary update is not fully implemented yet.");
+        }
+    }
+
     private void handleViewPayroll() {
-        int employeeId = inputHandler.readInt("Employee ID: ");
-        PayrollRecord payrollRecord = payrollService.getPayrollByEmployeeId(employeeId);
+        int empId = inputHandler.readInt("Employee ID: ");
+        PayrollRecord payrollRecord = payrollService.getPayrollByEmployeeId(empId);
 
         if (payrollRecord == null) {
             System.out.println("No payroll record found. Payroll logic still needs implementation.");

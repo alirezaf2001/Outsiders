@@ -1,53 +1,68 @@
 package model;
 
 public class Employee {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String department;
+    private int empId;
+    private String fname;
+    private String lname;
+    private String email;
+    private String hireDate;
     private double salary;
+    private String ssn;
+    private int addressId;
 
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String department, double salary) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.department = department;
+    public Employee(int empId, String fname, String lname, String email, String hireDate,
+            double salary, String ssn, int addressId) {
+        this.empId = empId;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.hireDate = hireDate;
         this.salary = salary;
+        this.ssn = ssn;
+        this.addressId = addressId;
     }
 
-    public int getId() {
-        return id;
+    public int getEmpId() {
+        return empId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmpId(int empId) {
+        this.empId = empId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFname() {
+        return fname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLname() {
+        return lname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
     }
 
     public double getSalary() {
@@ -58,13 +73,32 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
     @Override
     public String toString() {
-        return "Employee{id=" + id
-            + ", firstName='" + firstName + '\''
-            + ", lastName='" + lastName + '\''
-            + ", department='" + department + '\''
+        return "Employee{empId=" + empId
+            + ", fname='" + fname + '\''
+            + ", lname='" + lname + '\''
+            + ", email='" + email + '\''
+            + ", hireDate='" + hireDate + '\''
             + ", salary=" + salary
+            + ", ssn='" + ssn + '\''
+            + ", addressId=" + addressId
             + '}';
     }
 }

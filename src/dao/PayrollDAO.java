@@ -6,8 +6,8 @@ import model.PayrollRecord;
 public class PayrollDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
 
-    public PayrollRecord findByEmployeeId(int employeeId) {
-        // TODO: Use connectionManager.getConnection() and add a SELECT query.
+    public PayrollRecord findByEmployeeId(int empId) {
+        // TODO: Use connectionManager.getConnection() and query the payroll table by empId.
         return null;
     }
 }

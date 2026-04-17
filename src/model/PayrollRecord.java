@@ -1,63 +1,40 @@
 package model;
 
 public class PayrollRecord {
-    private int id;
-    private int employeeId;
-    private double baseSalary;
-    private double bonus;
-    private double deductions;
+    private int payrollId;
+    private int empId;
     private String payDate;
+    private double grossPay;
+    private double deductions;
+    private double netPay;
 
     public PayrollRecord() {
     }
 
-    public PayrollRecord(int id, int employeeId, double baseSalary, double bonus, double deductions, String payDate) {
-        this.id = id;
-        this.employeeId = employeeId;
-        this.baseSalary = baseSalary;
-        this.bonus = bonus;
-        this.deductions = deductions;
+    public PayrollRecord(int payrollId, int empId, String payDate, double grossPay,
+            double deductions, double netPay) {
+        this.payrollId = payrollId;
+        this.empId = empId;
         this.payDate = payDate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public double getBaseSalary() {
-        return baseSalary;
-    }
-
-    public void setBaseSalary(double baseSalary) {
-        this.baseSalary = baseSalary;
-    }
-
-    public double getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
-    }
-
-    public double getDeductions() {
-        return deductions;
-    }
-
-    public void setDeductions(double deductions) {
+        this.grossPay = grossPay;
         this.deductions = deductions;
+        this.netPay = netPay;
+    }
+
+    public int getPayrollId() {
+        return payrollId;
+    }
+
+    public void setPayrollId(int payrollId) {
+        this.payrollId = payrollId;
+    }
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
     }
 
     public String getPayDate() {
@@ -68,14 +45,38 @@ public class PayrollRecord {
         this.payDate = payDate;
     }
 
+    public double getGrossPay() {
+        return grossPay;
+    }
+
+    public void setGrossPay(double grossPay) {
+        this.grossPay = grossPay;
+    }
+
+    public double getDeductions() {
+        return deductions;
+    }
+
+    public void setDeductions(double deductions) {
+        this.deductions = deductions;
+    }
+
+    public double getNetPay() {
+        return netPay;
+    }
+
+    public void setNetPay(double netPay) {
+        this.netPay = netPay;
+    }
+
     @Override
     public String toString() {
-        return "PayrollRecord{id=" + id
-            + ", employeeId=" + employeeId
-            + ", baseSalary=" + baseSalary
-            + ", bonus=" + bonus
-            + ", deductions=" + deductions
+        return "PayrollRecord{payrollId=" + payrollId
+            + ", empId=" + empId
             + ", payDate='" + payDate + '\''
+            + ", grossPay=" + grossPay
+            + ", deductions=" + deductions
+            + ", netPay=" + netPay
             + '}';
     }
 }

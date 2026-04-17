@@ -1,7 +1,7 @@
 package model;
 
 public class HrUser {
-    private int id;
+    private int userId;
     private String username;
     private String password;
     private String role;
@@ -9,19 +9,19 @@ public class HrUser {
     public HrUser() {
     }
 
-    public HrUser(int id, String username, String password, String role) {
-        this.id = id;
+    public HrUser(int userId, String username, String password, String role) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -50,7 +50,7 @@ public class HrUser {
 
     @Override
     public String toString() {
-        return "HrUser{id=" + id
+        return "HrUser{userId=" + userId
             + ", username='" + username + '\''
             + ", role='" + role + '\''
             + '}';
