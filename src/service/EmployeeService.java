@@ -1,7 +1,5 @@
 package service;
 
-import java.util.List;
-
 import dao.AddressDAO;
 import dao.EmployeeDAO;
 import model.Address;
@@ -20,14 +18,15 @@ public class EmployeeService {
         return employeeDAO.findById(empId);
     }
 
-    public List<Employee> searchByLastName(String lname) {
-        if (lname == null || lname.trim().isEmpty()) {
-            System.out.println("Last name is required.");
-            return List.of();
-        }
+    // If to be implemented for searching by last name. output is list of the employees with the same last name.
+    // public List<Employee> searchByLastName(String lname) {
+    //     if (lname == null || lname.trim().isEmpty()) {
+    //         System.out.println("Last name is required.");
+    //         return List.of();
+    //     }
 
-        return employeeDAO.searchByLastName(lname);
-    }
+    //     return employeeDAO.searchByLastName(lname);
+    // }
 
     public boolean updateEmployee(Employee employee) {
         if (employee == null || employee.getEmpId() <= 0) {
