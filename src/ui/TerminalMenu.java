@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
+import db.ConnectionManager;
 import model.Employee;
 import model.PayrollRecord;
 import service.AuthService;
@@ -12,6 +13,7 @@ import util.InputHandler;
 public class TerminalMenu {
     private final Scanner scanner;
     private final InputHandler inputHandler;
+    private final ConnectionManager connectionManager;
     private final AuthService authService;
     private final EmployeeService employeeService;
     private final PayrollService payrollService;
@@ -19,6 +21,7 @@ public class TerminalMenu {
     public TerminalMenu() {
         this.scanner = new Scanner(System.in);
         this.inputHandler = new InputHandler(scanner);
+        this.connectionManager = new ConnectionManager();
         this.authService = new AuthService();
         this.employeeService = new EmployeeService();
         this.payrollService = new PayrollService();
@@ -48,6 +51,9 @@ public class TerminalMenu {
                     handleViewPayroll();
                     break;
                 case 6:
+                    handleTestDatabaseConnection();
+                    break;
+                case 7:
                     running = false;
                     System.out.println("Exiting program.");
                     break;
@@ -69,7 +75,8 @@ public class TerminalMenu {
         System.out.println("3. Update Employee");
         System.out.println("4. Update Salary");
         System.out.println("5. View Payroll");
-        System.out.println("6. Exit");
+        System.out.println("6. Test Database Connection");
+        System.out.println("7. Exit");
     }
 
     private void handleLogin() {
@@ -136,6 +143,16 @@ public class TerminalMenu {
             System.out.println("No payroll record found. Payroll logic still needs implementation.");
         } else {
             System.out.println(payrollRecord);
+        }
+    }
+
+    private void handleTestDatabaseConnection() {
+        boolean connected = connectionManager.testConnection();
+
+        if (connected) {
+            System.out.println("Database connection successful.");
+        } else {
+            System.out.println("Database connection test failed.");
         }
     }
 }
