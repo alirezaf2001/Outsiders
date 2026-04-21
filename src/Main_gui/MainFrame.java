@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
     private JPanel container = new JPanel(layout);
 
     public MainFrame() {
-        // Add screens
+    
         container.add(new MenuPanel(this), "menu");
         container.add(new Login(this), "login");
         container.add(new Search_Employee(this), "search");
