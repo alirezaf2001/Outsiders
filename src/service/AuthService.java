@@ -1,20 +1,20 @@
 package service;
 
-import dao.HrDAO;
+import dao.DivisionDAO;
+import model.Division;
 
 public class AuthService {
-    private final HrDAO hrDAO = new HrDAO();
+    private static final int HR_DIVISION_ID = 3;
 
-    public boolean login(String username, String password) {
-        if (isBlank(username) || isBlank(password)) {
-            System.out.println("Username and password are required.");
+    private final DivisionDAO divisionDAO = new DivisionDAO();
+
+    public boolean login(int empId) {
+        if (empId <= 0) {
+            System.out.println("Employee ID is required.");
             return false;
         }
 
-        return hrDAO.login(username, password) != null;
-    }
-
-    private boolean isBlank(String value) {
-        return value == null || value.trim().isEmpty();
+        Division division = divisionDAO.findDivisionByEmployeeId(empId);
+        return division != null && division.getDivID() == HR_DIVISION_ID;
     }
 }

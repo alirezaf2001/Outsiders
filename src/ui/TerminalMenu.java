@@ -80,14 +80,13 @@ public class TerminalMenu {
     }
 
     private void handleLogin() {
-        String username = inputHandler.readString("Username: ");
-        String password = inputHandler.readString("Password: ");
+        int empId = inputHandler.readInt("Employee ID: ");
 
-        boolean success = authService.login(username, password);
+        boolean success = authService.login(empId);
         if (success) {
             System.out.println("Login successful.");
         } else {
-            System.out.println("Login is not fully implemented yet.");
+            System.out.println("Access denied. Employee is not in the HR division.");
         }
     }
 
