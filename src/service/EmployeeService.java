@@ -28,6 +28,15 @@ public class EmployeeService {
     //     return employeeDAO.searchByLastName(lname);
     // }
 
+    public Employee searchByEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            System.out.println("Email is required.");
+            return null;
+        }
+
+        return employeeDAO.searchByEmail(email);
+    }
+
     public boolean updateEmployee(Employee employee) {
         if (employee == null || employee.getEmpId() <= 0) {
             System.out.println("Employee data is not valid.");

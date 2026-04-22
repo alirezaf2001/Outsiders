@@ -9,7 +9,14 @@ import model.Division;
 
 public class DivisionDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
-
+    /*
+    Find division by employee ID
+    Input: empId (int)
+    Output: Division object if found, otherwise null
+    Example usage:
+    DivisionDAO divisionDAO = new DivisionDAO();
+    Division division = divisionDAO.findDivisionByEmployeeId(1);
+    */
     public Division findDivisionByEmployeeId(int empId) {
         String sql = """
                 SELECT d.divID, d.Name, d.city, d.addressLine1, d.addressLine2, d.state, d.country, d.postalCode

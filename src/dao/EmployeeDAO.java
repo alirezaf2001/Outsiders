@@ -85,6 +85,45 @@ public class EmployeeDAO {
     //     return null;
     // }
 
+
+    /* 
+    Search employees by email
+    Input: email (String)
+    Output: Employee object if found, otherwise null  
+    Example usage:
+    EmployeeDAO employeeDAO = new EmployeeDAO();
+    Employee employee = employeeDAO.searchByEmail("example@example.com");
+    */
+    public Employee searchByEmail(String email) {
+
+        String sql = """
+                SELECT empid, Fname, Lname, email, HireDate, addressid, salary, SSN, addressID
+                FROM employees
+                WHERE email = ?
+                """;
+        try (Connection conn = connectionManager.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+
+                Employee emp = new Employee();
+                emp.setEmpId(rs.getInt("empid"));
+                emp.setFname(rs.getString("Fname"));
+                emp.setLname(rs.getString("Lname"));
+                emp.setEmail(rs.getString("email"));
+                emp.setHireDate(rs.getDate("HireDate").toString());
+                emp.setSalary(rs.getDouble("salary"));
+                emp.setSsn(rs.getString("SSN"));
+                emp.setAddressId(rs.getInt("addressid"));
+                return emp;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error finding employee by email:" + e.getMessage());
+        }
+        return null;
+    }
+
     /* 
     Update employee information
     Input: employee (Employee)
