@@ -2,10 +2,15 @@
 package gui_panels;
 import Main_gui.MainFrame;
 import javax.swing.*;
+import model.Employee;
+import service.AuthService;
+import service.EmployeeService;
+
 public class Login extends JPanel {
-
+    private final AuthService authService = new AuthService();
+    private final EmployeeService employeeService = new EmployeeService();
     public Login(MainFrame frame) {
-
+         
         JTextField userField = new JTextField(10);
         JPasswordField passField = new JPasswordField(10);
         JButton loginBtn = new JButton("Login");
@@ -15,7 +20,18 @@ public class Login extends JPanel {
         loginBtn.addActionListener(e -> {
             String user = userField.getText();
             String pass = new String(passField.getPassword());
+            AuthService authService = new AuthService();
+            if (authService.login(user, pass)) {
+                if (authService.isHrUser(employeeService.searchByEmail(user).getEmpId())) {
+                    frame.showScreen("HRmenu");
+                } else {
+                    frame.showScreen("Employeemenu");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid login");
+            }
 
+            // TODO: Temporary hardcoded login logic for testing !!! DETELE THIS LATER !!!
             if (user.equals("admin") && pass.equals("admin")) {
                 frame.showScreen("HRmenu");   
             }

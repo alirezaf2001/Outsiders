@@ -10,7 +10,7 @@ import model.Employee;
 public class EmployeeDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
 
-    /* 
+    /**
     Find employee by ID 
     Input: empId (int)
     Output: Employee object if found, otherwise null
@@ -48,7 +48,7 @@ public class EmployeeDAO {
     }
     
     // If to be implemented for searching by last name. output is list of the employees with the same last name.
-    /* 
+    /**
     Search employees by last name
     Input: lname (String)
     Output: List of Employee objects if found, otherwise empty list
@@ -86,7 +86,7 @@ public class EmployeeDAO {
     // }
 
 
-    /* 
+    /**
     Search employees by email
     Input: email (String)
     Output: Employee object if found, otherwise null  
@@ -124,7 +124,7 @@ public class EmployeeDAO {
         return null;
     }
 
-    /* 
+    /**
     Update employee information
     Input: employee (Employee)
     Output: boolean indicating success or failure
@@ -161,7 +161,7 @@ public class EmployeeDAO {
         return false;
     }
 
-    /* 
+    /**
     Update employee salary
     Input: empId (int), salary (double)
     Output: boolean indicating success or failure

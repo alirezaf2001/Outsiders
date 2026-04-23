@@ -9,7 +9,7 @@ import model.Division;
 
 public class DivisionDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
-    /*
+    /**
     Find division by employee ID
     Input: empId (int)
     Output: Division object if found, otherwise null
