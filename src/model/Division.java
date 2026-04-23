@@ -13,8 +13,16 @@ public class Division {
     public Division() {
     }
 
-    public Division(int divID, String name, String city, String addressLine1,
-            String addressLine2, String state, String country, String postalCode) {
+    public Division(
+        int divID,
+        String name,
+        String city,
+        String addressLine1,
+        String addressLine2,
+        String state,
+        String country,
+        String postalCode) {
+            
         this.divID = divID;
         this.name = name;
         this.city = city;

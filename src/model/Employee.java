@@ -13,8 +13,16 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int empId, String fname, String lname, String email, String hireDate,
-            double salary, String ssn, int addressId) {
+    public Employee(
+        int empId,
+        String fname,
+        String lname,
+        String email,
+        String hireDate,
+        double salary,
+        String ssn,
+        int addressId) {
+            
         this.empId = empId;
         this.fname = fname;
         this.lname = lname;

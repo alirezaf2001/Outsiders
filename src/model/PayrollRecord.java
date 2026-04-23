@@ -15,7 +15,8 @@ public class PayrollRecord {
     public PayrollRecord() {
     }
 
-    public PayrollRecord(int payrollId,
+    public PayrollRecord(
+        int payrollId,
         int empId,
         String payDate,
         double earnings,

@@ -14,8 +14,17 @@ public class Address {
     public Address() {
     }
 
-    public Address(int addressID, String street, int cityID, int stateID, String zip,
-            String DOB, String phone, String emergencyContact, String emergencyPhone) {
+    public Address(
+        int addressID,
+        String street,
+        int cityID,
+        int stateID,
+        String zip,
+        String DOB,
+        String phone,
+        String emergencyContact,
+        String emergencyPhone) {
+            
         this.addressID = addressID;
         this.street = street;
         this.cityID = cityID;
