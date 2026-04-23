@@ -2,12 +2,10 @@
 package gui_panels;
 import Main_gui.MainFrame;
 import javax.swing.*;
-import model.Employee;
 import service.AuthService;
 import service.EmployeeService;
 
 public class Login extends JPanel {
-    private final AuthService authService = new AuthService();
     private final EmployeeService employeeService = new EmployeeService();
     public Login(MainFrame frame) {
          
