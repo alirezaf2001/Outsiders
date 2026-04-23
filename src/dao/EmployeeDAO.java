@@ -11,13 +11,14 @@ public class EmployeeDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
 
     /**
-    Find employee by ID 
-    Input: empId (int)
-    Output: Employee object if found, otherwise null
-    Example usage:
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    Employee emp = employeeDAO.findById(1);
-    */
+     * Find employee by ID
+     * @param empId
+     * @return Employee object if found, otherwise null
+     * {@snippet lang="java" :
+     * EmployeeDAO employeeDAO = new EmployeeDAO();
+     * Employee employee = employeeDAO.findById(1);\
+     * }
+     */
     public Employee findById(int empId) {
         String sql = """
                 SELECT empid, Fname, Lname, email, HireDate, addressid, salary, SSN, addressID
@@ -87,13 +88,14 @@ public class EmployeeDAO {
 
 
     /**
-    Search employees by email
-    Input: email (String)
-    Output: Employee object if found, otherwise null  
-    Example usage:
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    Employee employee = employeeDAO.searchByEmail("example@example.com");
-    */
+     * Search employee by email
+     * @param email
+     * @return Employee object if found, otherwise null
+     * {@snippet lang="java" :
+     * EmployeeDAO employeeDAO = new EmployeeDAO();
+     * Employee employee = employeeDAO.searchByEmail("example@example.com");
+     * }
+     */
     public Employee searchByEmail(String email) {
 
         String sql = """
@@ -125,13 +127,16 @@ public class EmployeeDAO {
     }
 
     /**
-    Update employee information
-    Input: employee (Employee)
-    Output: boolean indicating success or failure
-    Example usage:
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    boolean updated = employeeDAO.updateEmployee(employee);
-    */
+     * Update employee information
+     * @param employee
+     * @return  boolean indicating success or failure
+     * {@snippet lang="java" :
+     * EmployeeDAO employeeDAO = new EmployeeDAO();
+     * Employee employee = employeeDAO.findById(1);
+     * employee.setEmail("newemail@example.com");
+     * boolean updated = employeeDAO.updateEmployee(employee);
+     * }
+     */
     public boolean updateEmployee(Employee employee) {
         String sql = """
                 UPDATE employees
@@ -162,13 +167,14 @@ public class EmployeeDAO {
     }
 
     /**
-    Update employee salary
-    Input: empId (int), salary (double)
-    Output: boolean indicating success or failure
-    Example usage:
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    boolean updated = employeeDAO.updateSalary(1, 50000.0);
-    */
+     * Update employee salary
+     * @param empId
+     * @param salary
+     * @return boolean indicating success or failure
+     * {@snippet lang="java" :
+     * EmployeeDAO employeeDAO = new EmployeeDAO();
+     * boolean updated = employeeDAO.updateSalary(1, 50000.0);}
+     */
     public boolean updateSalary(int empId, double salary) {
         String sql = """
                 UPDATE employees

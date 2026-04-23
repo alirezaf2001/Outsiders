@@ -11,13 +11,14 @@ public class AddressDAO {
     private final ConnectionManager connectionManager = new ConnectionManager();
 
     /**
-    Find address by ID
-    Input: addressId (int)
-    Output: Address object if found, otherwise null
-    Example usage:
-    AddressDAO addressDAO = new AddressDAO();
-    Address address = addressDAO.findById(1);
-    */
+     * Find address by ID
+     * @param addressId
+     * @return Address object if found, otherwise null
+     * {@snippet lang="java" :
+     * AddressDAO addressDAO = new AddressDAO();
+     * Address address = addressDAO.findById(1);
+     * }
+     */
     public Address findById(int addressId) {
         String sql = """
                 SELECT addressID, street, cityID, stateID, zip, DOB, phone, emergencyContact, emergencyPhone
