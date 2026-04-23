@@ -25,11 +25,11 @@ public class Login extends JPanel {
                 } else {
                     frame.showScreen("Employeemenu");
                 }
-            } else {
+            } else if (!user.equals("admin") && !user.equals("admin2")) {
                 JOptionPane.showMessageDialog(this, "Invalid login");
             }
 
-            // TODO: Temporary hardcoded login logic for testing !!! DETELE THIS LATER !!!
+            // TODO: Temporary hardcoded login logic for testing !!! DELETE THIS LATER !!!
             if (user.equals("admin") && pass.equals("admin")) {
                 frame.showScreen("HRmenu");   
             }
