@@ -25,6 +25,15 @@ public class PayrollService {
         return payrollDAO.findByEmployeeId(empId);
     }
 
+    /**
+     * Get payroll history by employee ID
+     * @param empId
+     * @return List of PayrollRecord objects if found, otherwise empty list
+     * {@snippet lang="java" :
+     * PayrollService payrollService = new PayrollService();
+     * List<PayrollRecord> records = payrollService.getPayrollHistoryByEmployeeId(1);
+     * }
+     */
     public List<PayrollRecord> findPayrollHistoryByEmployeeId(int empId) {
         if (empId <= 0) {
             System.out.println("Employee ID must be greater than 0.");

@@ -46,44 +46,6 @@ public class EmployeeDAO {
         }
         return null;
     }
-    
-    // If to be implemented for searching by last name. output is list of the employees with the same last name.
-    /**
-    Search employees by last name
-    Input: lname (String)
-    Output: List of Employee objects if found, otherwise empty list
-    Example usage:
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    List<Employee> employees = employeeDAO.searchByLastName("Smith");
-    */
-    // public List<Employee> searchByLastName(String lname) {
-
-    //     String sql = """
-    //             SELECT empid, Fname, Lname, email, HireDate, addressid, salary, SSN, addressID
-    //             FROM employees
-    //             WHERE Lname = ?
-    //             """;
-    //     List<Employee> emp = new ArrayList<>();
-    //     try (Connection conn = connectionManager.getConnection();
-    //         PreparedStatement stmt = conn.prepareStatement(sql)) {
-    //         stmt.setString(1, lname);
-    //         ResultSet rs = stmt.executeQuery();
-    //         while (rs.next()) {
-    //             Employee employee = new Employee();
-    //             employee.setEmpId(rs.getInt("empid"));
-    //             employee.setFname(rs.getString("Fname"));
-    //             employee.setLname(rs.getString("Lname"));
-    //             employee.setEmail(rs.getString("email"));
-    //             employee.setHireDate(rs.getDate("HireDate").toString());
-    //             emp.add(employee);
-    //         }
-    //         return emp;
-
-    //     } catch (SQLException e) {
-    //         System.out.println("Error finding employee by ID:" + e.getMessage());
-    //     }
-    //     return null;
-    // }
 
 
     /**
