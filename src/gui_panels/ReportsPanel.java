@@ -71,7 +71,7 @@ public class ReportsPanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Reports",
-                "Run the three required HR reports from the project story.",
+                "Run payroll and hiring reports.",
                 body));
 
         prepareForReport(ReportType.PAY_BY_JOB_TITLE);

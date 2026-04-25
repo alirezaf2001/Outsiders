@@ -4,7 +4,6 @@ import Main_gui.MainFrame;
 import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -16,8 +15,7 @@ import service.EmployeeService;
 This panel provides a form for HR admins to add new employees to the system.
 It includes fields for all required employee information and validates input
 before attempting to add the employee to the database.
-The form is designed to be straightforward and aligned with the current database schema, 
-with notes to guide HR users on how to fill in certain fields.
+Address creation is intentionally handled elsewhere for now.
 */
 public class AddEmployeePanel extends JPanel {
     private final EmployeeService employeeService = new EmployeeService();
@@ -50,14 +48,6 @@ public class AddEmployeePanel extends JPanel {
         AppUI.addFormRow(formPanel, 7, "Division ID", divisionIdField);
 
         JPanel body = AppUI.createBodyPanel();
-        JLabel idNote = AppUI.createInfoLabel(
-                "Employee ID is assigned from the next available empID because the current schema is not auto-increment.");
-        JLabel addressNote = AppUI.createInfoLabel(
-                "Address ID must already exist in the addresses table. Full address insertion is left as a TODO.");
-        body.add(idNote);
-        body.add(Box.createVerticalStrut(6));
-        body.add(addressNote);
-        body.add(Box.createVerticalStrut(14));
         body.add(formPanel);
         body.add(Box.createVerticalStrut(8));
         body.add(AppUI.createButtonRow(saveBtn, clearBtn, backBtn));
@@ -65,7 +55,7 @@ public class AddEmployeePanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Add New Employee",
-                "Keep employee insertion simple and aligned with the current schema.",
+                "Enter the employee information below.",
                 body));
     }
 

@@ -72,7 +72,7 @@ public class EmployeeDetailsPanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Employee Details",
-                "HR can edit employee records here. Employees see the same screen in read-only mode.",
+                "View employee information and update it when editing is available.",
                 bodyScrollPane));
 
         clearView();
@@ -107,8 +107,8 @@ public class EmployeeDetailsPanel extends JPanel {
         setEditableFields(this.editable);
         saveBtn.setVisible(this.editable);
         modeLabel.setText(this.editable
-                ? "Edit the employee fields that match the current schema, then save."
-                : "This view is read-only for employees and for HR search-only mode.");
+                ? "Edit the employee information and save your changes."
+                : "This record is view-only.");
         return true;
     }
 

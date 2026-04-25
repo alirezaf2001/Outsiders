@@ -84,7 +84,7 @@ public class EmployeeSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Employee Search",
-                "Use one search panel for both HR admins and general employees.",
+                "Search for an employee record.",
                 body));
 
         prepareForMode(ActionMode.VIEW);

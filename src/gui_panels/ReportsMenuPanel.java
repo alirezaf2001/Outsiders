@@ -24,7 +24,7 @@ public class ReportsMenuPanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Reports",
-                "Run the required HR reports for payroll and hiring activity.",
+                "Choose a report to run.",
                 body));
     }
 }

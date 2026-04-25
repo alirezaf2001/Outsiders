@@ -57,7 +57,7 @@ public class PayrollHistoryPanel extends JPanel {
         setLayout(new BorderLayout());
         add(AppUI.createScreenShell(
                 "Payroll History",
-                "Employees can see their own pay history. HR can open history for any selected employee.",
+                "View payroll records for the selected employee.",
                 body));
     }
 
