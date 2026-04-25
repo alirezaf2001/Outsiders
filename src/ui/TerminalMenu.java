@@ -69,7 +69,7 @@ public class TerminalMenu {
     }
 
     private void printMenu() {
-        System.out.println("=== HR Management Menu ===");
+        System.out.println("=== Legacy Console Menu ===");
         System.out.println("1. Login");
         System.out.println("2. Search Employee");
         System.out.println("3. Update Employee");
@@ -80,13 +80,14 @@ public class TerminalMenu {
     }
 
     private void handleLogin() {
-        int empId = inputHandler.readInt("Employee ID: ");
+        String email = inputHandler.readString("Email: ");
+        String password = inputHandler.readString("Password (last 4 of SSN): ");
 
-        boolean success = authService.login(empId);
+        boolean success = authService.login(email, password);
         if (success) {
             System.out.println("Login successful.");
         } else {
-            System.out.println("Access denied. Employee is not in the HR division.");
+            System.out.println("Login failed.");
         }
     }
 

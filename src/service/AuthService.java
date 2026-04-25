@@ -5,7 +5,8 @@ import model.Division;
 import model.Employee;
 
 public class AuthService {
-    private static final int HR_DIVISION_ID = 3; //set HR Division ID
+    // HR division ID is hardcoded for simplicity
+    private static final int HR_DIVISION_ID = 3;
 
     private final DivisionDAO divisionDAO = new DivisionDAO();
 
@@ -24,15 +25,18 @@ public class AuthService {
             System.out.println("Email and password are required.");
             return false;
         }
+
         Employee employee = new EmployeeService().searchByEmail(email);
         if (employee == null) {
             System.out.println("No employee found with the provided email.");
             return false;
         }
+
         if (!(employee.getSsn().substring(employee.getSsn().length() - 4)).equals(password)) {
             System.out.println("Incorrect password.");
             return false;
         }
+
         return true;
     }
 

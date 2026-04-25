@@ -1,6 +1,8 @@
 package service;
 
 import dao.PayrollDAO;
+import java.util.Collections;
+import java.util.List;
 import model.PayrollRecord;
 
 public class PayrollService {
@@ -21,5 +23,14 @@ public class PayrollService {
         }
 
         return payrollDAO.findByEmployeeId(empId);
+    }
+
+    public List<PayrollRecord> findPayrollHistoryByEmployeeId(int empId) {
+        if (empId <= 0) {
+            System.out.println("Employee ID must be greater than 0.");
+            return Collections.emptyList();
+        }
+
+        return payrollDAO.findPayrollHistoryByEmployeeId(empId);
     }
 }
