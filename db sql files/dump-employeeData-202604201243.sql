@@ -136,7 +136,7 @@ CREATE TABLE `employee_division` (
 
 LOCK TABLES `employee_division` WRITE;
 /*!40000 ALTER TABLE `employee_division` DISABLE KEYS */;
-INSERT INTO `employee_division` VALUES (7,1),(10,1),(1,999),(2,999),(3,999);
+INSERT INTO `employee_division` VALUES (7,1),(10,3),(1,999),(2,999),(3,999);
 /*!40000 ALTER TABLE `employee_division` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -1,8 +1,8 @@
-import ui.TerminalMenu;
+import Main_gui.MainFrame;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
-        TerminalMenu terminalMenu = new TerminalMenu();
-        terminalMenu.start();
+        SwingUtilities.invokeLater(MainFrame::new);
     }
 }

@@ -21,7 +21,9 @@ public class AddressDAO {
      */
     public Address findById(int addressId) {
         String sql = """
-                SELECT addressID, street, cityID, stateID, zip, DOB, phone, emergencyContact, emergencyPhone
+                SELECT addressID, street, cityID, stateID, zip, DOB, phone,
+                       emergency_contact AS emergencyContact,
+                       emergency_phone AS emergencyPhone
                 FROM addresses
                 WHERE addressID = ?
                 LIMIT 1

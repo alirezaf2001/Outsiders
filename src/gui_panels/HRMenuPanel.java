@@ -1,36 +1,33 @@
 package gui_panels;
 import Main_gui.MainFrame;
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class HRMenuPanel extends JPanel {
 
     public HRMenuPanel(MainFrame frame) {
+        JButton employeeManagementBtn = AppUI.createPrimaryButton("1. Employee Management");
+        JButton payrollManagementBtn = AppUI.createSecondaryButton("2. Payroll / Salary Management");
+        JButton reportsBtn = AppUI.createSecondaryButton("3. Reports");
+        JButton logoutBtn = AppUI.createSecondaryButton("0. Logout");
 
-        setLayout(new GridLayout(7, 1, 10, 10)); 
+        employeeManagementBtn.addActionListener(e -> frame.showHrEmployeeManagementMenu());
+        payrollManagementBtn.addActionListener(e -> frame.showHrPayrollMenu());
+        reportsBtn.addActionListener(e -> frame.showReportsMenu());
+        logoutBtn.addActionListener(e -> frame.logout());
 
-        JLabel title = new JLabel("MAIN MENU", SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 20));
+        JPanel body = AppUI.createBodyPanel();
+        body.add(AppUI.createMenuButtonStack(
+                employeeManagementBtn,
+                payrollManagementBtn,
+                reportsBtn,
+                logoutBtn));
 
-        JButton searchBtn = new JButton("Search Employee");
-        JButton updateEmpBtn = new JButton("Update Employee");
-        JButton updateSalaryBtn = new JButton("Update Salary");
-        JButton viewPayrollBtn = new JButton("View Payroll");
-        JButton exitBtn = new JButton("Exit");
-
-        searchBtn.addActionListener(e -> frame.showScreen("HRsearch"));
-        updateEmpBtn.addActionListener(e -> frame.showScreen("updateEmployee"));
-        updateSalaryBtn.addActionListener(e -> frame.showScreen("updateSalary"));
-        viewPayrollBtn.addActionListener(e -> frame.showScreen("viewPayroll"));
-        exitBtn.addActionListener(e -> System.exit(0));
-
-        add(title);
-
-        add(searchBtn);
-        add(updateEmpBtn);
-        add(updateSalaryBtn);
-        add(viewPayrollBtn);
-        add(exitBtn);
+        setLayout(new BorderLayout());
+        add(AppUI.createScreenShell(
+                "HR Admin Menu",
+                "Choose a section to manage employees, payroll, and reports.",
+                body));
     }
 }
-

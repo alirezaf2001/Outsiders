@@ -1,46 +1,42 @@
 package gui_panels;
 import Main_gui.MainFrame;
-import java.awt.*;
+import java.awt.BorderLayout;
 import javax.swing.*;
+
 public class View_Payroll extends JPanel {
-    private JTextArea resultArea = new JTextArea(5, 20);
-    private JTextField empIdField = new JTextField(10);
+    private final JTextArea resultArea = AppUI.createOutputArea(
+            8,
+            28,
+            "Payroll details will appear here after you connect the payroll query.");
+    private final JTextField empIdField = AppUI.createTextField(22);
 
     public View_Payroll(MainFrame frame) {
-        setLayout(new GridLayout(0, 1, 5, 5)); 
-        JLabel title = new JLabel("View Payroll", SwingConstants.CENTER);
-        JLabel prompt = new JLabel("Search by Employee ID:");
-        JButton searchBtn = new JButton("Search");
-        JButton back = new JButton("Back to Menu");
+        JButton searchBtn = AppUI.createPrimaryButton("View Payroll");
+        JButton clearBtn = AppUI.createSecondaryButton("Clear");
+        JButton backBtn = AppUI.createSecondaryButton("Back to Menu");
 
-        back.addActionListener(e -> frame.showScreen("menu"));
-        /*searchBtn.addActionListener(e -> {
-            try {
-                int empId = Integer.parseInt(empIdField.getText());
-                PayrollDAO DAO = new PayrollDAO();
+        clearBtn.addActionListener(e -> {
+            empIdField.setText("");
+            resultArea.setText("Payroll details will appear here after you connect the payroll query.");
+        });
+        backBtn.addActionListener(e -> frame.returnToMenu());
 
-                Employee emp = DAO.findById(empId);
+        JPanel formPanel = AppUI.createFormPanel();
+        AppUI.addFormRow(formPanel, 0, "Employee ID", empIdField);
 
-                if (emp != null) {
-                    resultArea.setText(emp.toString());
-                } else {
-                        JOptionPane.showMessageDialog(this, "Employee not found");
-                }
+        JPanel body = AppUI.createBodyPanel();
+        body.add(formPanel);
+        body.add(Box.createVerticalStrut(6));
+        body.add(AppUI.createButtonRow(searchBtn, clearBtn, backBtn));
+        body.add(Box.createVerticalStrut(18));
+        body.add(AppUI.createInfoLabel("Payroll Summary"));
+        body.add(Box.createVerticalStrut(8));
+        body.add(AppUI.wrapTextArea(resultArea));
 
-            } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                "Error finding employee: " + ex.getMessage(),
-                "Database Error",
-                JOptionPane.ERROR_MESSAGE);
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid ID");
-        }
-});/* */ 
-
-        add(title);
-        add(prompt);
-        add(searchBtn);
-        add(back);
+        setLayout(new BorderLayout());
+        add(AppUI.createScreenShell(
+                "View Payroll",
+                "View employee payroll information.",
+                body));
     }
 }

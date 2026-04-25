@@ -1,57 +1,43 @@
 package gui_panels;
 
 import Main_gui.MainFrame;
-import java.awt.*;
+import java.awt.BorderLayout;
 import javax.swing.*;
 
 public class Search_Employee extends JPanel {
-    
-    private JTextArea resultArea = new JTextArea(5, 20);
-    private JTextField empIdField = new JTextField(10);
+    private final JTextArea resultArea = AppUI.createOutputArea(
+            7,
+            28,
+            "Search results will appear here after you connect the employee lookup logic.");
+    private final JTextField empIdField = AppUI.createTextField(22);
 
     public Search_Employee(MainFrame frame) {
-        setLayout(new GridLayout(0, 1, 5, 5)); 
+        JButton searchBtn = AppUI.createPrimaryButton("Search");
+        JButton clearBtn = AppUI.createSecondaryButton("Clear");
+        JButton backBtn = AppUI.createSecondaryButton("Back to Menu");
 
-        JLabel title = new JLabel("Search Employee Screen");
-        JLabel prompt = new JLabel("Search by Employee ID:");
-        
-        JButton searchBtn = new JButton("Search");
-     
-        JButton backBtn = new JButton("Back to Menu");
+        clearBtn.addActionListener(e -> {
+            empIdField.setText("");
+            resultArea.setText("Search results will appear here after you connect the employee lookup logic.");
+        });
+        backBtn.addActionListener(e -> frame.returnToMenu());
 
-        
-        /*searchBtn.addActionListener(e -> {
-            try {
-                int empId = Integer.parseInt(empIdField.getText());
-                EmployeeDAO DAO = new EmployeeDAO();
+        JPanel formPanel = AppUI.createFormPanel();
+        AppUI.addFormRow(formPanel, 0, "Employee ID", empIdField);
 
-                Employee emp = DAO.findById(empId);
+        JPanel body = AppUI.createBodyPanel();
+        body.add(formPanel);
+        body.add(Box.createVerticalStrut(6));
+        body.add(AppUI.createButtonRow(searchBtn, clearBtn, backBtn));
+        body.add(Box.createVerticalStrut(18));
+        body.add(AppUI.createInfoLabel("Results"));
+        body.add(Box.createVerticalStrut(8));
+        body.add(AppUI.wrapTextArea(resultArea));
 
-                if (emp != null) {
-                    resultArea.setText(emp.toString());
-                } else {
-                        JOptionPane.showMessageDialog(this, "Employee not found");
-                }
-
-            } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                "Error finding employee: " + ex.getMessage(),
-                "Database Error",
-                JOptionPane.ERROR_MESSAGE);
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid ID");
-        }
-});*/
-        
-        backBtn.addActionListener(e -> frame.showScreen("menu"));
-        add(title);
-        
-        add(prompt);
-        add(empIdField);
-        add(searchBtn);
-       
-       add(new JScrollPane(resultArea));
-        add(backBtn);
+        setLayout(new BorderLayout());
+        add(AppUI.createScreenShell(
+                "Search Employee",
+                "Find and view employee information.",
+                body));
     }
 }
